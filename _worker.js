@@ -20,7 +20,7 @@ let 主动断开阈值 = 32 //单位M，表示单次请求最大传输多少M则
 //////////////////////////////////////////////////////////////////////////转发配置////////////////////////////////////////////////////////////////////////
 //以下是负载均衡worker的地址，可以包含本地，至少填2个以上，10-20个最佳，不需要绑自定义域，直接使用dev最快，请求数会指数级增长【同账号下的情况】，单文件部署的请留空地址
 let 转发地址 = [
-  //'cloudflare-xxxxxxnxb01.pages.dev','cloudflare-xxxxxxnxb02.pages.dev','cloudflare-xxxxxxnxb03.pages.dev','cloudflare-xxxxxxnxb04.pages.dev','cloudflare-xxxxxxnxb05.pages.dev','cloudflare-xxxxxxnxb06.pages.dev','cloudflare-xxxxxxnxb07.pages.dev','cloudflare-xxxxxxnxb08.pages.dev','cloudflare-xxxxxxnxb09.pages.dev','cloudflare-xxxxxxnxb10.pages.dev',//示例
+  //'cloudflare-xxxxxxnxb01.pages.dev','cloudflare-xxxxxxnxb02.pages.dev','cloudflare-xxxxxxnxb03.pages.dev','cloudflare-xxxxxxnxb04.pages.dev','cloudflare-xxxxxxnxb05.pages.dev','cloudflare-xxxxxxnxb06.pages.dev','cloudflare-xxxxxxnxb07.pages.dev','cloudflare-xxxxxxnxb08.pages.dev','cloudflare-xxxxxxnxb09.pages.dev','cloudflare-xxxxxxnxb10.pages.dev', //示例
 ];
 //////////////////////////////////////////////////////////////////////////DOH配置/////////////////////////////////////////////////////////////////////////
 let 启用DNS预缓存 = true //没什么太大作用的功能，可以轻微提升连接建立速度，客观上感受就是轻微提升响应速度
