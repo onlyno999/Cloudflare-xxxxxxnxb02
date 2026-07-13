@@ -1,4 +1,4 @@
-﻿import { connect } from 'cloudflare:sockets';
+import { connect } from 'cloudflare:sockets';
 //说明：抛弃了ed配置，不要设置/?ed=2560，此版只支持ws传输协议，可单文件部署也可以多部署负载均衡，单文件部署支持snippets
 const Snippets部署 = false; //如果是Snippets部署，需要设置为true，否则false
 
@@ -20,7 +20,7 @@ let 主动断开阈值 = 32 //单位M，表示单次请求最大传输多少M则
 //////////////////////////////////////////////////////////////////////////转发配置////////////////////////////////////////////////////////////////////////
 //以下是负载均衡worker的地址，可以包含本地，至少填2个以上，10-20个最佳，不需要绑自定义域，直接使用dev最快，请求数会指数级增长【同账号下的情况】，单文件部署的请留空地址
 let 转发地址 = [
-  //'cloudflare-xxxxxxnxb01.pages.dev','cloudflare-xxxxxxnxb02.pages.dev','cloudflare-xxxxxxnxb03.pages.dev','cloudflare-xxxxxxnxb04.pages.dev' //示例
+  //'cloudflare-xxxxxxnxb01.pages.dev','cloudflare-xxxxxxnxb02.pages.dev', //示例
 ];
 //////////////////////////////////////////////////////////////////////////DOH配置/////////////////////////////////////////////////////////////////////////
 let 启用DNS预缓存 = true //没什么太大作用的功能，可以轻微提升连接建立速度，客观上感受就是轻微提升响应速度
@@ -357,7 +357,7 @@ async function 创建SOCKS5接口(识别地址类型, 访问地址, 访问端口
           转换访问地址 = new Uint8Array( [4, ...访问地址.split(':').flatMap(s => [(parseInt(s, 16) >> 8) & 255, parseInt(s, 16) & 255])] );
           break;
       }
-      const ���建转换后的访问地址 = new Uint8Array([ 5, 1, 0, ...转换访问地址, 访问端口 >> 8, 访问端口 & 0xff ]); //构建转换好的地址消息
+      const 构建转换后的访问地址 = new Uint8Array([ 5, 1, 0, ...转换访问地址, 访问端口 >> 8, 访问端口 & 0xff ]); //构建转换好的地址消息
       await 传输数据.write(构建转换后的访问地址); //发送转换后的地址
       const 检查返回响应 = (await 读取数据.read()).value;
       if (检查返回响应[0] !== 0x05 || 检查返回响应[1] !== 0x00) {
